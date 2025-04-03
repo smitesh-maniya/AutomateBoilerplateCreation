@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Your Name",
+    "name": "Api Service Template",
+    "identity": "ApiService.Template",
+    "shortName": "api-service",
+    "tags": { "language": "C#", "type": "project" },
+    "sourceName": "ApiServiceTemplate",
+    "symbols": {
+        "AppName": {
+            "type": "parameter",
+            "description": "App Name",
+            "replaces": "{{AppName}}",
+            "isRequired": true
+        },
+        "ProductName": {
+            "type": "parameter",
+            "description": "Product Name",
+            "replaces": "{{ProductName}}",
+            "isRequired": true,
+            "choices": [
+                { "value": "Universal", "description": "Universal Product" },
+                { "value": "Identity", "description": "Identity Product" }
+            ]
+        },
+        "HealthCheck": {
+            "type": "parameter",
+            "description": "Health Check Endpoint",
+            "replaces": "{{HealthCheck}}",
+            "isRequired": true
+        }
+    }
+  }
+  

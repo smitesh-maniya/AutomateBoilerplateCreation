@@ -1,0 +1,37 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+COPY ["/src/Api/Api.csproj", "./src/Api/Api.csproj"]
+COPY ["/tests/UnitTests/UnitTests.csproj", "./tests/UnitTests/UnitTests.csproj"]
+COPY ["*", "./"]
+
+COPY ["NuGet.Config","./NuGet.Config"]
+
+ARG GIT_TOKEN
+ARG GIT_USER
+
+RUN sed -i "s|</configuration>|<packageSourceCredentials><Github><add key=\"Username\" value=\"${GIT_USER}\" /><add key=\"ClearTextPassword\" value=\"${GIT_TOKEN}\" /></Github></packageSourceCredentials></configuration>|" NuGet.Config
+RUN cat NuGet.Config
+
+RUN dotnet restore 
+
+# copy everything else and build
+COPY . ./
+RUN pwd
+
+
+RUN dotnet test /p:CollectCoverage=true /p:CoverletOutput='/app/result.json' /p:ExcludeByFile=\"**/appsettings*.json,**/Program.cs,**/Properties/*,**/Extensions/**/*,**/Shared/**/*\"
+#RUN cat /app/result.json
+
+FROM build AS publish
+RUN dotnet publish src/Api/Api.csproj -c Release -o /app/publish --no-restore
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Api.dll" ]
