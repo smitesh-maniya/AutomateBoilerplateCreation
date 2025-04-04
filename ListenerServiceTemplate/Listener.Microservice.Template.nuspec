@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Listener.Microservice.Template</id>
+    <version>1.0.0</version>
+    <authors>Smitesh Maniya</authors>
+    <owners>Smitesh Maniya</owners>
+    <description>Listener Microservice Template</description>
+    <tags>dotnet-template microservice listener</tags>
+  </metadata>
+  <files>
+    <file src="content\**" target="content" />
+  </files>
+</package>

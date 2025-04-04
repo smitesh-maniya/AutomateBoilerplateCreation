@@ -1,0 +1,42 @@
+﻿{
+  "profiles": {
+    "Local": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "launch/url/path",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Local",
+        "AWS_SSM_PS_ACCESS_KEY": "",
+        "AWS_SSM_PS_PATH": "/development/engineering",
+        "AWS_SSM_PS_SECRET_KEY": "",
+        "API_GATEWAY_SERVICE_UPSTREAM_HOST": "https://dev-service.peddle.com",
+        "IDENTITY_PROVIDER_SERVICE_HOST": "https://dev-auth.peddle.com/identity-provider"
+      },
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Development": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Staging": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging"
+      },
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Production": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "applicationUrl": "http://localhost:5000"
+    }
+  }
+}

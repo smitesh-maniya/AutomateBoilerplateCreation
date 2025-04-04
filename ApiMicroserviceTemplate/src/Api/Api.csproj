@@ -12,6 +12,8 @@
     <WarningsAsErrors Condition="$(ContinuousIntegrationBuild) == 'true' OR '$(Configuration)' == 'Release'">
       <!-- (WarningsAsErrors);NU1900;NU1901;NU1902;NU1903;NU1904 -->
     </WarningsAsErrors>
+    <IsPackable>true</IsPackable>
+    <PackageId>API.Microservice.Template</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,5 +32,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="TinyHealthCheck" Version="1.1.1" />
   </ItemGroup>
-
 </Project>

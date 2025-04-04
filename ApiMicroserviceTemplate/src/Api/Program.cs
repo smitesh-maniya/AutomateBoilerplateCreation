@@ -38,7 +38,7 @@ webAppBuilder.Configuration.AddSystemsManagerForPaths(loggerSystemsManagerPaths!
 webAppBuilder.Logging.ClearProviders();
 webAppBuilder.Host.UseSerilog((context, _, loggerConfiguration) => loggerConfiguration.ReadFrom.Configuration(context.Configuration).EnableSensitiveDataMasking());
 
-webAppBuilder.Configuration.AddSystemsManagerForProduct(Product.{{ProductName}},webAppBuilder.Configuration,webAppBuilder.Services,options =>
+webAppBuilder.Configuration.AddSystemsManagerForProduct(Product.Universal,webAppBuilder.Configuration,webAppBuilder.Services,options =>
 {
     options.IdentityProviderServiceHost = webAppBuilder.Configuration.GetValue<string>("IDENTITY_PROVIDER_SERVICE_HOST");
     options.GenericMicroserviceClientId = webAppBuilder.Configuration.GetValue<string>("Secrets:ApiClient:GenericMicroserviceClientId");
